@@ -1,0 +1,59 @@
+<div class="form-horizontal pad-10">
+    <br>
+    <form #ajoutEventForm="ngForm">
+      <div class="col-md-6 form-group">
+        <label class=" control-label">Nom de l'évènement</label>
+        <div class="col-md-12 no-padding">
+          <input name="name" id="name" #name="ngModel" [(ngModel)]="event.name" class="form-control" placeholder="" type="text" required />
+          <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+            <div [hidden]="!name.errors.required">
+              Le nom est requis !
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 form-group">
+        <label class=" control-label">Prix de l'évènement</label>
+        <div class="col-md-12 no-padding">
+          <input name="price" id="price" #price="ngModel" [(ngModel)]="event.price" class="form-control" placeholder="" type="number" required />
+          <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
+            <div [hidden]="!price.errors.required">
+              Le prix est requis !
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 form-group">
+        <label class=" control-label">Date de l'évènement</label>
+        <div class="col-md-12 no-padding">
+          <input name="date" id="date" #date="ngModel" [(ngModel)]="event.date" class="form-control" placeholder="" type="date" required />
+          <div *ngIf="date.errors && (date.dirty || date.touched)" class="alert alert-danger">
+            <div [hidden]="!date.errors.required">
+              La date est requise !
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 form-group">
+        <label class=" control-label">Capacité max de l'évènement</label>
+        <div class="col-md-12 no-padding">
+          <input name="capacity" id="capacity" #capacity="ngModel" [(ngModel)]="event.capacity" class="form-control" placeholder="" type="number" required />
+          <div *ngIf="capacity.errors && (capacity.dirty || capacity.touched)" class="alert alert-danger">
+            <div [hidden]="!capacity.errors.required">
+              La capacité max requise !
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pad-10">
+        <button mwlConfirmationPopover
+                [popoverTitle]="'Confirmation'"
+                [popoverMessage]="'êtes-vous sûr?'"
+                placement="top"
+                (confirm)="createEvent(event)"
+                type="submit" class="btn btn-save btn-primary" [disabled]="!ajoutEventForm.valid">
+          <span class="glyphicon glyphicon-floppy-disk"></span> Sauvegarder
+        </button>
+      </div>
+    </form>
+  </div>

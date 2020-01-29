@@ -1,0 +1,48 @@
+<div class="form-horizontal pad-10">
+    <br>
+    <form #registerForm="ngForm">
+      <div class="col-md-6 form-group">
+        <label class=" control-label">Surnom</label>
+        <div class="col-md-12 no-padding">
+          <input name="nickname" id="nickname" #nickname="ngModel" [(ngModel)]="user.nickname" class="form-control" placeholder="" type="text" required />
+          <div *ngIf="nickname.errors && (nickname.dirty || nickname.touched)" class="alert alert-danger">
+            <div [hidden]="!nickname.errors.required">
+              Le surnom est requis !
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 form-group">
+        <label class=" control-label">Email</label>
+        <div class="col-md-12 no-padding">
+          <input name="email" id="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" placeholder="" type="email" required />
+          <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+            <div [hidden]="!email.errors.required">
+              L'email' est requis !
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 form-group">
+        <label class=" control-label">Mot de passe</label>
+        <div class="col-md-12 no-padding">
+          <input name="password" id="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="" type="password" required />
+          <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+            <div [hidden]="!password.errors.required">
+              Le mot de passe est requis !
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pad-10">
+        <button mwlConfirmationPopover
+                [popoverTitle]="'Confirmation'"
+                [popoverMessage]="'êtes-vous sûr?'"
+                placement="top"
+                (confirm)="createUser(user)"
+                type="submit" class="btn btn-save btn-primary" [disabled]="!registerForm.valid">
+          <span class="glyphicon glyphicon-floppy-disk"></span> Sauvegarder
+        </button>
+      </div>
+    </form>
+  </div>

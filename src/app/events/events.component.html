@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-12 pad-10">
+      <button type="submit" class="btn btn-primary" (click)="goToAddEvent()">
+        <span class="glyphicon glyphicon-floppy-disk"></span> Ajouter un évènement
+      </button>
+    </div>
+  </div>
+  
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prix</th>
+      <th>Date</th>
+      <th>Capacité max</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let event of events">
+      <td>{{ event.id }}</td>
+      <td>{{ event.name }}</td>
+      <td>{{ event.price }}€</td>
+      <td>{{ showDate(event) }}</td>
+      <td>{{ event.capacity }}</td>
+    </tr>
+    </tbody>
+  </table>
