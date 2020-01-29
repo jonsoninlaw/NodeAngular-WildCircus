@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       error: err => console.log(err),
       complete: () => {
         sessionStorage.setItem("user", this.user.id.toString());
-        this.router.navigateByUrl('/');
+        window.location.href = "/";
       }
         });
   }

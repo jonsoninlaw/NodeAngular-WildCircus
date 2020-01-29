@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit{
     password: null
   }
 
-  online:boolean = false;
+  online:boolean = sessionStorage.getItem("user") != null ? true : false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -29,9 +29,6 @@ export class DashboardComponent implements OnInit{
     );
 
   constructor(private userService: UserService, private breakpointObserver: BreakpointObserver, private router:Router) {
-    if (sessionStorage.getItem("user") != null) {
-      this.online = true;
-    }
   }
 
   logout() {
@@ -41,7 +38,6 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit() {
     if (sessionStorage.getItem("user") != null) {
-      this.online = true;
       let result:User;
       this.userService.getUserByEmail(sessionStorage.getItem("userEmail")).subscribe((data: User) => {
         this.user = data;

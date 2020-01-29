@@ -18,7 +18,7 @@ export class EventService {
     this.http.post(`${this.url}/events`, data)
       .subscribe(
         res => {
-          this.toastr.success('Votre évènement a été créé avec succès.', 'Success');
+          this.toastr.success('Votre évènement a été créé avec succès.');
           this.router.navigateByUrl('/events');
         },
         err => {
@@ -35,7 +35,7 @@ export class EventService {
       this.http.post(`${this.url}/userEvents`, data)
       .subscribe(
         res => {
-          this.toastr.success('Votre achat a été validé.', 'Success');
+          this.toastr.success('Votre achat a été validé.');
         },
         err => {
           this.toastr.error('Vous avez déjà acheté ce billet.');
