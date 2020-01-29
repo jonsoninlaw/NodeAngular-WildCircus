@@ -28,21 +28,24 @@ export class DashboardComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private userService: UserService, private breakpointObserver: BreakpointObserver, private router:Router) {}
-
-  getSession() {
+  constructor(private userService: UserService, private breakpointObserver: BreakpointObserver, private router:Router) {
     if (sessionStorage.getItem("user") != null) {
       this.online = true;
     }
   }
 
+  logout() {
+    sessionStorage.clear();
+    this.router.navigateByUrl('/');
+  }
+
   ngOnInit() {
     if (sessionStorage.getItem("user") != null) {
+      this.online = true;
       let result:User;
       this.userService.getUserByEmail(sessionStorage.getItem("userEmail")).subscribe((data: User) => {
         this.user = data;
       });
-      //this.router.navigateByUrl('/profile');
     }
   }
 }

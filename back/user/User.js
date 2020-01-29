@@ -5,8 +5,12 @@ var User = {
         return db.query('INSERT INTO user(nickname, email, password) values(?, ?, ?)',[User.nickname, User.email, User.password], callback);
     },
 
-    getUserByEmail: function (query, callback) {
-        return db.query('SELECT * FROM user WHERE email = ?', query.email, callback);
+    getUserById: function (query, callback) {
+        return db.query('SELECT * FROM user WHERE ID = ?', query.id, callback);
+    },
+
+    getUserByEmailAndPassword: function (query, callback) {
+        return db.query('SELECT * FROM user WHERE email = ? AND password = ?', [query.email, query.password], callback);
     }
 }
 

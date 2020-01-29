@@ -5,24 +5,18 @@
       </button>
     </div>
   </div>
-  
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nom</th>
-      <th>Prix</th>
-      <th>Date</th>
-      <th>Capacité max</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let event of events">
-      <td>{{ event.id }}</td>
-      <td>{{ event.name }}</td>
-      <td>{{ event.price }}€</td>
-      <td>{{ showDate(event) }}</td>
-      <td>{{ event.capacity }}</td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let event of events">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ event.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ event.price }}€</h6>
+            <p class="card-text">{{ showDate(event) }}</p>
+            <h6 class="card-subtitle mb-2 text-muted">{{ event.capacity }} places</h6>
+            <a href="#" (click)="addUserEvent($event, event.id)" class="card-link">Acheter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

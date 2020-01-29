@@ -13,6 +13,11 @@ export class UserService {
     return this.http.get(`${this.url}/users`, {'params': params});
   }
 
+  getUserByEmailAndPassword(email, password) {
+    let params = new HttpParams().set("email", email).set("password", password);
+    return this.http.get(`${this.url}/users`, {'params': params});
+  }
+
   createUser(data) {
     return this.http.post(`${this.url}/users`, data)
       .subscribe(

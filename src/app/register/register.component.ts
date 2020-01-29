@@ -21,8 +21,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  createUser(user: User) {
-    this.userService.createUser(user);
-    sessionStorage.setItem("userEmail", user.email);
+  createUser() {
+    this.userService.createUser(this.user);
   }
 }

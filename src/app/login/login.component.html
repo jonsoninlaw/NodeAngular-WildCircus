@@ -1,16 +1,11 @@
-<!-- Default form login -->
-<form class="text-center border border-light p-5">
 
-    <p class="h4 mb-4">Log in</p>
-  
-    <!-- Email -->
-    <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-  
-    <!-- Password -->
-    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-  
-    <!-- Sign in button -->
-    <button mdbBtn color="info" block="true" class="my-4" type="submit" (confirm)="onSubmit(user)">Log in</button>
-  
-  </form>
-  <!-- Default form login -->
+<div class="container">
+  <div class="row justify-content-md-center">
+    <form class="text-center" (ngSubmit)="onSubmit()">
+      <p class="h4 mb-4">Log in</p>
+      <input name="email" type="email" id="defaultLoginFormEmail" [(ngModel)]="user.email" class="form-control mb-4" placeholder="E-mail" required>
+      <input name="password" type="password" id="defaultLoginFormPassword" [(ngModel)]="user.password" class="form-control mb-4" placeholder="Password" required>
+      <button color="info" block="true" class="btn btn-primary" type="submit">Log in</button>
+    </form>
+  </div>
+</div>

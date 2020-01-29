@@ -4,9 +4,10 @@
 @import "~ngx-toastr/toastr.css";
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.home-background {
-    background: url("https://cdn.dribbble.com/users/150724/screenshots/2093715/286_roller_coaster.png") no-repeat;
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: url("https://ak6.picdn.net/shutterstock/videos/1010643926/thumb/12.jpg") no-repeat;
     background-size: cover;
-}
+ }
+

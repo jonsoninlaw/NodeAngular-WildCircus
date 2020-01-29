@@ -1,26 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register">Inscription</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Connexion</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/events">Evènements</a>
-      </li>
-      <li class="nav-item">
-        <span *ngIf="online">Vous êtes connecté !</span>
-      </li>
-    </ul>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <a class="navbar-brand">Wild Circus</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/events">Evènements</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="online" routerLink="/profile">Mon compte</a>
+        </li>
+      </ul>
+    </div>
+    <div class="form-inline my-2 my-lg-0">
+      <div class="nav-item">
+        <a class="nav-link" *ngIf="online" (click)="logout()" href="">Déconnexion</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" *ngIf="!online" routerLink="/register">Inscription</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" *ngIf="!online" routerLink="/login">Connexion</a>
+      </div>
+    </div>
   </div>
 </nav>
 <router-outlet></router-outlet>

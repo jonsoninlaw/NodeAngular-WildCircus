@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from './event.service';
+import { UserEvent } from './userEvent.interface';
 import { Router } from '@angular/router';
 import { Event } from './events.interface';
 
@@ -22,8 +23,19 @@ export class EventsComponent implements OnInit {
       });
   }
 
-  goToAddEvent () {
+  goToAddEvent (event: Event) {
+    this.eventService.createEvent(event);
     this.router.navigateByUrl('/ajout-event');
+  }
+
+  addUserEvent ($event, eventId: Number) {
+    $event.preventDefault();
+    let userId = sessionStorage.getItem("user");
+    let userEvent: UserEvent = {
+      userId: parseInt(userId),
+      eventId: eventId
+    };
+    this.eventService.createUserEvent(userEvent);
   }
 
   showDate(event:Event) {
