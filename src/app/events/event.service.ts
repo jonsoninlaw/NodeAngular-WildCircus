@@ -49,12 +49,6 @@ export class EventService {
     return true;
   }
 
-/*   sellUserEvent(eventId, userId, eventPrice) {
-    let params = {"eventId": eventId, "userId": userId, "money": eventPrice};
-    this.http.post(`${this.url}/deleteUserEvent`, params).subscribe();
-    console.log("youhou");
-  } */
-
   sellUserEvent(eventId, userId, eventPrice) {
     console.log(eventId);
     let httpParams = new HttpParams().set('eventId', eventId).set("userId", userId).set("money", eventPrice);

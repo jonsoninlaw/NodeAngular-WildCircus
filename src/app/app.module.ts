@@ -37,10 +37,12 @@ import { ProfileComponent } from './profile/profile.component';
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'events', component: EventsComponent},
+  {path: 'events_', component: EventsComponent},
   {path: 'ajout-event', component: AjoutEventComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'profile_', component: ProfileComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'
   }
 ];
@@ -76,7 +78,10 @@ const appRoutes: Routes = [
     MatGridListModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-center',
+    }),
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger' // set defaults here
     }),

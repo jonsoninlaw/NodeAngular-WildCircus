@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     sessionStorage.clear();
-    this.router.navigateByUrl('/');
+    window.location.href = '/';
   }
 
   ngOnInit() {

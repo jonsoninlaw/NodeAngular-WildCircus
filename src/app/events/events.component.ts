@@ -12,6 +12,8 @@ export class EventsComponent implements OnInit {
 
   events:Event[];
 
+  admin:boolean = sessionStorage.getItem("admin") != null ? true : false;
+
   constructor(private eventService:EventService, private router:Router) { }
 
   @Output('activate')
@@ -35,7 +37,11 @@ export class EventsComponent implements OnInit {
     let money = parseInt(sessionStorage.getItem("money"));
     if (this.eventService.createUserEvent(eventId, userId, eventPrice, money)) {
       sessionStorage.setItem("money", (money - eventPrice).toString());
-      this.router.navigateByUrl('/profile');
+      if (this.router.url == '/events') {
+        this.router.navigateByUrl('/events_');
+      } else {
+        this.router.navigateByUrl('/events');
+      }
     }
   }
 

@@ -36,6 +36,10 @@ export class ProfileComponent implements OnInit {
     let money = parseInt(sessionStorage.getItem("money"));
     this.eventService.sellUserEvent(eventId, userId, eventPrice)
     sessionStorage.setItem("money", (money + eventPrice).toString());
-    this.router.navigateByUrl('/events');
+    if (this.router.url == '/profile') {
+      this.router.navigateByUrl('/profile_');
+    } else {
+      this.router.navigateByUrl('/profile');
+    }
   }
 }

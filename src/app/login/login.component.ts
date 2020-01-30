@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         if (this.user.email == "admin@admin.com") {
           sessionStorage.setItem("admin", "admin");
         }
-        window.location.href = "/";
+        window.location.href = "/events";
       }
     });
   }

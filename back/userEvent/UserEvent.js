@@ -10,7 +10,6 @@ var UserEvent = {
     },
 
     sellUserEvent: function (query, callback) {
-        console.log(query);
         return db.query('DELETE FROM ticket WHERE event_id = ? AND user_id = ? LIMIT 1', [query.eventId, query.userId], callback);
     },
 
