@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EventService } from './event.service';
 import { Router } from '@angular/router';
 import { Event } from './events.interface';
@@ -13,6 +13,9 @@ export class EventsComponent implements OnInit {
   events:Event[];
 
   constructor(private eventService:EventService, private router:Router) { }
+
+  @Output('activate')
+  activateEvents: EventEmitter<any>;
 
   ngOnInit() {
     this.eventService
@@ -32,6 +35,7 @@ export class EventsComponent implements OnInit {
     let money = parseInt(sessionStorage.getItem("money"));
     if (this.eventService.createUserEvent(eventId, userId, eventPrice, money)) {
       sessionStorage.setItem("money", (money - eventPrice).toString());
+      this.router.navigateByUrl('/profile');
     }
   }
 

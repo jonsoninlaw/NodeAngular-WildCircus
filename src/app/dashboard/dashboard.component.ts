@@ -34,6 +34,11 @@ export class DashboardComponent implements OnInit{
   constructor(private userService: UserService, private breakpointObserver: BreakpointObserver, private router:Router) {
   }
 
+  onActivate($event) {
+    let money = parseInt(sessionStorage.getItem("money"));
+    this.money = money;
+  }
+
   logout() {
     sessionStorage.clear();
     this.router.navigateByUrl('/');

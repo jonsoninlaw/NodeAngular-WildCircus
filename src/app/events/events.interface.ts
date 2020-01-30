@@ -4,6 +4,7 @@ export interface Event {
     price: Number;
     date: Date;
     capacity: Number;
+    img: string;
 
     showDate();
   }

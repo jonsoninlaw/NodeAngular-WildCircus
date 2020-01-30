@@ -15,6 +15,7 @@ export class AjoutEventComponent implements OnInit {
     price: null,
     date: null,
     capacity: null,
+    img: null,
 
     showDate() {
       let date = new Date(this.date);
