@@ -1,4 +1,8 @@
 export interface UserEvent {
-    eventId: Number;
-    userId: Number;
+    name: string;
+    price: number;
+    date: Date;
+    quantity: number;
+
+    showDate();
 }

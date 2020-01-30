@@ -27,11 +27,16 @@ export class EventService {
       );
   }
 
-  createUserEvent(eventId, userId, money) {
+  createUserEvent(eventId, userId, eventPrice, money) {
     if (isNaN(userId)) {
       this.toastr.error('Vous devez créer un compte pour pouvoir acheter un billet.');
-    } else {
-      let params = {"eventId": eventId, "userId": userId, "money": money};
+      return false;
+    } else if (money < eventPrice) {
+      this.toastr.error("Désolé, vous n'avez pas assez d'argent !");
+      return false;
+    }
+    else {
+      let params = {"eventId": eventId, "userId": userId, "money": eventPrice};
       this.http.post(`${this.url}/userEvents`, params)
       .subscribe(
         res => {
@@ -42,5 +47,13 @@ export class EventService {
         }
       );
     }
+    return true;
+  }
+
+  getUserEvents(userId) {
+    let params = new HttpParams().set("userId", userId);
+    return this
+      .http
+      .get(`${this.url}/userEvents`, {'params': params});
   }
 }

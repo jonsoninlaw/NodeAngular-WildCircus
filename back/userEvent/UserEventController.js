@@ -4,12 +4,13 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.json());
 var UserEvent = require('./UserEvent');
 var User = require('../user/User');
+var Event = require('../event/Event');
 var cors = require('cors');
 
 router.use(cors());
 
 router.get('/', function (req, res) {
-    UserEvent.getUserEvents(function(err,rows){
+    UserEvent.getUserEvents(req.query.userId, function(err,rows){
         if(err) {
             res.status(400).json(err);
         }
@@ -28,7 +29,8 @@ router.post('/', function (req, res) {
         }
         else{
             res.json(count);
-            console.log(User.updateUserMoney(req.body.userId, req.body.money), function() {});
+            User.updateUserMoney(req.body.userId, req.body.money), function() {};
+            Event.updateEvent(req.body.eventId), function() {};
         }
     });
 });

@@ -19,7 +19,10 @@
     </div>
     <div class="form-inline my-2 my-lg-0">
       <div class="nav-item">
-        <a class="nav-link" *ngIf="online">{{money}} €</a>
+        <a class="nav-link" *ngIf="online">Bonjour {{nickname}} !</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" *ngIf="online">Vous avez {{money}} €</a>
       </div>
       <div class="nav-item">
         <a class="nav-link" *ngIf="online" (click)="logout()" href="">Déconnexion</a>

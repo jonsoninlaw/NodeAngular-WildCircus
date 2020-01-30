@@ -1,1 +1,17 @@
-<p>profile works!</p>
+<div class="row justify-content-md-center">
+    <p class="h4 mb-4">Mes tickets</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let event of events">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{ event.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ event.price }}€</h6>
+            <p class="card-text">{{ showDate(event) }}</p>
+            <h6 class="card-subtitle mb-2 text-muted">{{ event.quantity }} tickets</h6>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

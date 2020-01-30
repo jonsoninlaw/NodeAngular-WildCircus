@@ -9,9 +9,9 @@ var UserEvent = {
         return db.query('UPDATE ticket SET quantity += 1 WHERE event_id = ? AND user_id = ?', [UserEvent.eventId, UserEvent.userId], callback);
     },
 
-    getUserEvents: function(UserEvent, callback)
+    getUserEvents: function(userId, callback)
     {
-        return db.query('SELECT * FROM ticket where id = ?', [UserEvent.userId], callback);
+        return db.query('SELECT * FROM ticket LEFT JOIN event ON event.id = event_id WHERE user_id = ?', [userId], callback);
     },
 }
 

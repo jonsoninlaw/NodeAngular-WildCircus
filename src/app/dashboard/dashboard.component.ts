@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit{
 
   online:boolean = sessionStorage.getItem("user") != null ? true : false;
   money:number = sessionStorage.getItem("money") != null ? parseInt(sessionStorage.getItem("money")) : null;
+  nickname:string = sessionStorage.getItem("nickname") != null ? sessionStorage.getItem("nickname") : null;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

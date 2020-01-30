@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../events/event.service';
+import { UserEvent } from '../events/userEvent.interface';
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  events:Event[];
+  events: UserEvent[];
 
-  constructor() { }
+  constructor(private eventService:EventService) { }
 
   ngOnInit() {
+    this.eventService
+    .getUserEvents(parseInt(sessionStorage.getItem("user")))
+    .subscribe((data: UserEvent[]) => {
+      this.events = data;
+    });
   }
 
+  showDate(event:Event) {
+    let date = new Date(event.date);
+    let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+    let month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+    let year = date.getFullYear();
+    return day + "/" + month + "/" + year;
+  }
 }
