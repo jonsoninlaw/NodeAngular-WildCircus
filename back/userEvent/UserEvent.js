@@ -11,7 +11,7 @@ var UserEvent = {
 
     getUserEvents: function(userId, callback)
     {
-        return db.query('SELECT * FROM ticket LEFT JOIN event ON event.id = event_id WHERE user_id = ?', [userId], callback);
+        return db.query('SELECT name, price, date, COUNT(*) as quantity FROM ticket LEFT JOIN event ON event.id = event_id WHERE user_id = ? GROUP BY event_id', [userId], callback);
     },
 }
 
