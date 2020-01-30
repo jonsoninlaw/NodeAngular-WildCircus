@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 
@@ -27,12 +27,12 @@ export class EventService {
       );
   }
 
-  createUserEvent(data) {
-    console.log(data.userId);
-    if (isNaN(data.userId)) {
+  createUserEvent(eventId, userId, money) {
+    if (isNaN(userId)) {
       this.toastr.error('Vous devez créer un compte pour pouvoir acheter un billet.');
     } else {
-      this.http.post(`${this.url}/userEvents`, data)
+      let params = {"eventId": eventId, "userId": userId, "money": money};
+      this.http.post(`${this.url}/userEvents`, params)
       .subscribe(
         res => {
           this.toastr.success('Votre achat a été validé.');

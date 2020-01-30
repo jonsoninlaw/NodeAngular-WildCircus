@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
     id: null,
     nickname: null,
     email: null,
-    password: null
+    password: null,
+    money: null
   };
 
   constructor(private userService:UserService, private router:Router) { }
@@ -26,15 +27,18 @@ export class LoginComponent implements OnInit {
     this.userService.getUserByEmailAndPassword(this.user.email, this.user.password).subscribe({
       next: (data: any) => {
         if (data != null) {
-          this.user.id = data.ID;
+          this.user.id = data.id;
           this.user.nickname = data.nickname;
+          this.user.email = data.email;
+          this.user.money = data.money;
         }
       },
       error: err => console.log(err),
       complete: () => {
         sessionStorage.setItem("user", this.user.id.toString());
+        sessionStorage.setItem("money", this.user.money.toString());
         window.location.href = "/";
       }
-        });
+    });
   }
 }

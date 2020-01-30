@@ -2,7 +2,7 @@ var db = require('../db');
 
 var User = {
     createUser: function (User, callback) {
-        return db.query('INSERT INTO user(nickname, email, password) values(?, ?, ?)',[User.nickname, User.email, User.password], callback);
+        return db.query('INSERT INTO user(nickname, email, password, money) values(?, ?, ?, ?)',[User.nickname, User.email, User.password, User.money], callback);
     },
 
     getUserById: function (query, callback) {
@@ -11,7 +11,11 @@ var User = {
 
     getUserByEmailAndPassword: function (query, callback) {
         return db.query('SELECT * FROM user WHERE email = ? AND password = ?', [query.email, query.password], callback);
-    }
+    },
+
+    updateUserMoney: function (userId, money, callback) {
+        return db.query('UPDATE user SET money = money - ? WHERE id = ?',[parseInt(money), userId], callback);
+    },
 }
 
 module.exports = User;

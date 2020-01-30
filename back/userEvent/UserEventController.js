@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.json());
-var User = require('./UserEvent');
+var UserEvent = require('./UserEvent');
+var User = require('../user/User');
 var cors = require('cors');
 
 router.use(cors());
 
 router.get('/', function (req, res) {
-    Event.getUserEvents(function(err,rows){
+    UserEvent.getUserEvents(function(err,rows){
         if(err) {
             res.status(400).json(err);
         }
@@ -20,13 +21,14 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    User.createUserEvent(req.body,function(err,count){
+    UserEvent.createUserEvent(req.body,function(err,count){
         if(err)
         {
             res.status(400).json(err);
         }
         else{
-            res.json(req.body);
+            res.json(count);
+            console.log(User.updateUserMoney(req.body.userId, req.body.money), function() {});
         }
     });
 });

@@ -14,7 +14,7 @@
             <h6 class="card-subtitle mb-2 text-muted">{{ event.price }}€</h6>
             <p class="card-text">{{ showDate(event) }}</p>
             <h6 class="card-subtitle mb-2 text-muted">{{ event.capacity }} places</h6>
-            <a href="#" (click)="addUserEvent($event, event.id)" class="card-link">Acheter</a>
+            <a href="#" (click)="addUserEvent($event, event.id, event.price)" class="card-link">Acheter</a>
           </div>
         </div>
       </div>

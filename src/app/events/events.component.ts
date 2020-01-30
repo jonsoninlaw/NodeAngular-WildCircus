@@ -28,14 +28,12 @@ export class EventsComponent implements OnInit {
     this.router.navigateByUrl('/ajout-event');
   }
 
-  addUserEvent ($event, eventId: Number) {
+  addUserEvent ($event, eventId: Number, eventPrice: number) {
     $event.preventDefault();
-    let userId = sessionStorage.getItem("user");
-    let userEvent: UserEvent = {
-      userId: parseInt(userId),
-      eventId: eventId
-    };
-    this.eventService.createUserEvent(userEvent);
+    let userId = parseInt(sessionStorage.getItem("user"));
+    let money = parseInt(sessionStorage.getItem("money")) - eventPrice;
+    sessionStorage.setItem("money", money.toString());
+    this.eventService.createUserEvent(eventId, userId, eventPrice);
   }
 
   showDate(event:Event) {
