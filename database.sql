@@ -31,7 +31,8 @@ CREATE TABLE event(
         name      Varchar (120) NOT NULL ,
         price     Int NOT NULL ,
 	date     Date NOT NULL ,
-        capacity Int NOT NULL
+        capacity Int NOT NULL,
+	img Text NOT NULL
 	,CONSTRAINT event_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
