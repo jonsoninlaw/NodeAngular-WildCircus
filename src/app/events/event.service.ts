@@ -14,7 +14,6 @@ export class EventService {
   }
 
   createEvent(data) {
-    
     this.http.post(`${this.url}/events`, data)
       .subscribe(
         res => {

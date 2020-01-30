@@ -31,7 +31,7 @@ export class AjoutEventComponent implements OnInit {
   ngOnInit() {
   }
 
-  createEvent(data: Event) {
-    this.eventService.createEvent(data);
+  createEvent() {
+    this.eventService.createEvent(this.event);
   }
 }

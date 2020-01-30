@@ -6,7 +6,7 @@ var Event = {
     },
 
     createEvent: function (Event, callback) {
-        return db.query('INSERT INTO event(name, price, date, capacity) values(?, ?, ?, ?)',[Event.name, Event.price, Event.date, Event.capacity], callback);
+        return db.query('INSERT INTO event(name, price, date, capacity, img) values(?, ?, ?, ?, ?)',[Event.name, Event.price, Event.date, Event.capacity, Event.img], callback);
     },
 
     updateEvent: function (eventId, symbol, callback) {

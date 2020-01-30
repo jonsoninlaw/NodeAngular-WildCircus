@@ -22,7 +22,7 @@ export class UserService {
     return this.http.post(`${this.url}/users`, data)
       .subscribe(
         res => {
-          this.toastr.success('Votre compte a été créé avec succès.', 'Success');
+          this.toastr.success('Votre compte a bien été créé.');
           this.router.navigateByUrl('/');
         },
         err => {
