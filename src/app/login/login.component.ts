@@ -38,6 +38,9 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("user", this.user.id.toString());
         sessionStorage.setItem("money", this.user.money.toString());
         sessionStorage.setItem("nickname", this.user.nickname.toString());
+        if (this.user.email == "admin@admin.com") {
+          sessionStorage.setItem("admin", "admin");
+        }
         window.location.href = "/";
       }
     });

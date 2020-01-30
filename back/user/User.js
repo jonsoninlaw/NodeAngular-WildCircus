@@ -13,8 +13,12 @@ var User = {
         return db.query('SELECT * FROM user WHERE email = ? AND password = ?', [query.email, query.password], callback);
     },
 
-    updateUserMoney: function (userId, money, callback) {
-        return db.query('UPDATE user SET money = money - ? WHERE id = ?',[parseInt(money), userId], callback);
+    updateUserMoney: function (userId, money, symbol, callback) {
+        if (symbol == "+") {
+            return db.query('UPDATE user SET money = money + ? WHERE id = ?',[money, userId], callback);
+        } else {
+            return db.query('UPDATE user SET money = money - ? WHERE id = ?',[money, userId], callback);
+        }
     },
 }
 

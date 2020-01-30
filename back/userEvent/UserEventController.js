@@ -29,8 +29,22 @@ router.post('/', function (req, res) {
         }
         else{
             res.json(count);
-            User.updateUserMoney(req.body.userId, req.body.money), function() {};
-            Event.updateEvent(req.body.eventId), function() {};
+            User.updateUserMoney(req.body.userId, req.body.money, "-"), function() {};
+            Event.updateEvent(req.body.eventId, "-"), function() {};
+        }
+    });
+});
+
+router.delete('/', function (req, res) {
+    UserEvent.sellUserEvent(req.query,function(err,count){
+        if(err)
+        {
+            res.status(400).json(err);
+        }
+        else{
+            res.json(count);
+            User.updateUserMoney(parseInt(req.query.userId), parseInt(req.query.money), "+"), function() {};
+            Event.updateEvent(parseInt(req.query.eventId), "+"), function() {};
         }
     });
 });

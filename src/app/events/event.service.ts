@@ -50,6 +50,26 @@ export class EventService {
     return true;
   }
 
+/*   sellUserEvent(eventId, userId, eventPrice) {
+    let params = {"eventId": eventId, "userId": userId, "money": eventPrice};
+    this.http.post(`${this.url}/deleteUserEvent`, params).subscribe();
+    console.log("youhou");
+  } */
+
+  sellUserEvent(eventId, userId, eventPrice) {
+    console.log(eventId);
+    let httpParams = new HttpParams().set('eventId', eventId).set("userId", userId).set("money", eventPrice);
+    let options = { params: httpParams };
+    this.http.delete(`${this.url}/userEvents`, options).subscribe(
+      res => {
+        this.toastr.success('Le cirque a racheté votre place.');
+      },
+      err => {
+        this.toastr.error('Trop tard !');
+      }
+    );
+  }
+
   getUserEvents(userId) {
     let params = new HttpParams().set("userId", userId);
     return this

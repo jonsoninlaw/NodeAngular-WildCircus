@@ -1,25 +1,17 @@
-<div class="row">
-  <div class="col-md-12 pad-10">
-    <button type="submit" class="btn btn-primary" (click)="goToAddEvent()">
-      <span class="glyphicon glyphicon-floppy-disk"></span> Ajouter un évènement
-    </button>
-  </div>
-</div>
-
 <div class="container">
-<div class="row row-cols-1 row-cols-md-3">
-  <div class="col mb-4" *ngFor="let event of events">
-    <div class="card h-100">
-      <img [src]="event.img" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{ event.name }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{ event.price }}€</h6>
-          <p class="card-text">{{ showDate(event) }}</p>
-          <h6 *ngIf="event.capacity > 0" class="card-subtitle mb-2 text-muted">{{ event.capacity }} places</h6>
-          <h6 *ngIf="event.capacity <= 0" class="card-subtitle mb-2 text-muted">PLUS DE PLACE !</h6>
-          <a href="#" *ngIf="event.capacity > 0" (click)="addUserEvent($event, event.id, event.price)" class="card-link">Acheter</a>
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4" *ngFor="let event of events">
+      <div class="card h-100">
+        <img [src]="event.img" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ event.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ event.price }}€</h6>
+            <p class="card-text">{{ showDate(event) }}</p>
+            <h6 *ngIf="event.capacity > 0" class="card-subtitle mb-2 text-muted">{{ event.capacity }} places</h6>
+            <h6 *ngIf="event.capacity <= 0" class="card-subtitle mb-2 text-muted">PLUS DE PLACE !</h6>
+            <a href="#" *ngIf="event.capacity > 0" (click)="addUserEvent($event, event.id, event.price)" class="card-link">Acheter</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

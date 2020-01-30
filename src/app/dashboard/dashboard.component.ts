@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay, timeout } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
 
   user:User = {
     id: null,
@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit{
   online:boolean = sessionStorage.getItem("user") != null ? true : false;
   money:number = sessionStorage.getItem("money") != null ? parseInt(sessionStorage.getItem("money")) : null;
   nickname:string = sessionStorage.getItem("nickname") != null ? sessionStorage.getItem("nickname") : null;
+  admin:boolean = sessionStorage.getItem("admin") != null ? true : false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -31,7 +32,7 @@ export class DashboardComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private userService: UserService, private breakpointObserver: BreakpointObserver, private router:Router) {
+  constructor(private elementRef:ElementRef, private userService: UserService, private breakpointObserver: BreakpointObserver, private router:Router) {
   }
 
   onActivate($event) {
@@ -51,5 +52,11 @@ export class DashboardComponent implements OnInit{
         this.user = data;
       });
     }
+  }
+
+  ngAfterViewInit() {
+    var s = document.createElement("script");
+    s.innerHTML="let audio = new Audio('../../assets/circus.mp3');audio.play();";
+    this.elementRef.nativeElement.appendChild(s);
   }
 }

@@ -9,9 +9,13 @@ var UserEvent = {
         return db.query('UPDATE ticket SET quantity += 1 WHERE event_id = ? AND user_id = ?', [UserEvent.eventId, UserEvent.userId], callback);
     },
 
-    getUserEvents: function(userId, callback)
-    {
-        return db.query('SELECT name, price, date, COUNT(*) as quantity FROM ticket LEFT JOIN event ON event.id = event_id WHERE user_id = ? GROUP BY event_id', [userId], callback);
+    sellUserEvent: function (query, callback) {
+        console.log(query);
+        return db.query('DELETE FROM ticket WHERE event_id = ? AND user_id = ? LIMIT 1', [query.eventId, query.userId], callback);
+    },
+
+    getUserEvents: function(userId, callback) {
+        return db.query('SELECT event.id, name, price, date, COUNT(*) as quantity FROM ticket LEFT JOIN event ON event.id = event_id WHERE user_id = ? GROUP BY event_id', [userId], callback);
     },
 }
 

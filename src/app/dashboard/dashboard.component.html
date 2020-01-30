@@ -13,7 +13,10 @@
           <a class="nav-link" routerLink="/events">Evènements</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="online" routerLink="/profile">Mes tickets</a>
+          <a class="nav-link" *ngIf="online && !admin" routerLink="/profile">Mes tickets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="admin" routerLink="/ajout-event">Créer un évènement</a>
         </li>
       </ul>
     </div>
@@ -36,6 +39,8 @@
     </div>
   </div>
 </nav>
+<script>
+</script>
 <router-outlet (activate)='onActivate($event)'></router-outlet>
 
 <!-- <mat-sidenav-container class="sidenav-container">
