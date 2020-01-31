@@ -31,6 +31,7 @@ router.post('/', function (req, res) {
             res.json(count);
             User.updateUserMoney(req.body.userId, req.body.money, "-"), function() {};
             Event.updateEvent(req.body.eventId, "-"), function() {};
+            User.updateOwnerMoney(parseInt(req.query.money), "+"), function() {};
         }
     });
 });
@@ -45,6 +46,7 @@ router.delete('/', function (req, res) {
             res.json(count);
             User.updateUserMoney(parseInt(req.query.userId), parseInt(req.query.money), "+"), function() {};
             Event.updateEvent(parseInt(req.query.eventId), "+"), function() {};
+            User.updateOwnerMoney(parseInt(req.query.money), "-"), function() {};
         }
     });
 });

@@ -23,6 +23,14 @@ var User = {
             return db.query('UPDATE user SET money = money - ? WHERE id = ?',[money, userId], callback);
         }
     },
+
+    updateOwnerMoney: function (money, symbol, callback) {
+        if (symbol == "+") {
+            return db.query('UPDATE user SET money = money + ? WHERE email = "admin@admin.com"',[money], callback);
+        } else {
+            return db.query('UPDATE user SET money = money - ? WHERE email = "admin@admin.com"',[money], callback);
+        }
+    },
 }
 
 module.exports = User;
