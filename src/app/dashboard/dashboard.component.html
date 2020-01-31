@@ -22,7 +22,7 @@
     </div>
     <div class="form-inline my-2 my-lg-0">
       <div class="nav-item">
-        <a class="nav-link" *ngIf="money < 50" routerLink="/winmoney">Besoin d'argent ?</a>
+        <a class="nav-link" *ngIf="money < 50 && !admin" routerLink="/winmoney">Besoin d'argent ?</a>
       </div>
       <div class="nav-item">
         <a class="nav-link" *ngIf="online">Bonjour {{nickname}} !</a>

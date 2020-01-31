@@ -31,7 +31,7 @@ router.post('/', function (req, res) {
             res.json(count);
             User.updateUserMoney(req.body.userId, req.body.money, "-"), function() {};
             Event.updateEvent(req.body.eventId, "-"), function() {};
-            User.updateOwnerMoney(parseInt(req.query.money), "+"), function() {};
+            User.updateOwnerMoney(parseInt(req.body.money), "+"), function() {};
         }
     });
 });

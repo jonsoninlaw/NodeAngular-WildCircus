@@ -55,7 +55,7 @@ export class EventService {
     let options = { params: httpParams };
     this.http.delete(`${this.url}/userEvents`, options).subscribe(
       res => {
-        this.toastr.success('Le cirque a racheté votre place ' + eventPrice + ' € !');
+        this.toastr.success('Le cirque a racheté votre place ' + Math.floor(eventPrice) + ' € !');
       },
       err => {
         this.toastr.error('Trop tard !');
