@@ -32,6 +32,9 @@ export class AjoutEventComponent implements OnInit {
   }
 
   createEvent() {
+    if (this.event.img == null) {
+      this.event.img = "https://cdn.dribbble.com/users/1090020/screenshots/6575551/1-01.png"
+    }
     this.eventService.createEvent(this.event);
   }
 }

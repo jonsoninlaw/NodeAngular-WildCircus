@@ -22,7 +22,6 @@ export class WinmoneyComponent implements OnInit {
         clearInterval(x);
         document.getElementById("countdown").hidden = true;
         document.getElementById("moneyButton").hidden = false;
-        //document.getElementById("countdown").innerHTML = "<a color='info' href='' (click)='earnMoney($event)' class='btn btn-primary'>Prendre mon argent</a>"
       } else {
         countDown -= 1;
       }
