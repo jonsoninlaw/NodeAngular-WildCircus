@@ -16,7 +16,7 @@ CREATE TABLE user(
         id       Int  Auto_increment  NOT NULL ,
         nickname Varchar (120) NOT NULL ,
         email    Varchar (120) NOT NULL ,
-        password Varchar (120) NOT NULL ,
+        password Text NOT NULL ,
         money    Int NOT NULL
 	,CONSTRAINT user_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;

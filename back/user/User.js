@@ -1,8 +1,10 @@
-var db = require('../db');
+const db = require('../db');
+const crypto = require('crypto');
 
 var User = {
     createUser: function (User, callback) {
-        return db.query('INSERT INTO user(nickname, email, password, money) values(?, ?, ?, ?)',[User.nickname, User.email, User.password, User.money], callback);
+        hashedPassword = crypto.pbkdf2Sync(User.password, "hello", 1000, 64, `sha512`).toString(`hex`);
+        return db.query('INSERT INTO user(nickname, email, password, money) values(?, ?, ?, ?)',[User.nickname, User.email, hashedPassword, User.money], callback);
     },
 
     getUserById: function (query, callback) {
@@ -10,7 +12,8 @@ var User = {
     },
 
     getUserByEmailAndPassword: function (query, callback) {
-        return db.query('SELECT * FROM user WHERE email = ? AND password = ?', [query.email, query.password], callback);
+        hashedPassword = crypto.pbkdf2Sync(query.password, "hello", 1000, 64, `sha512`).toString(`hex`);
+        return db.query('SELECT * FROM user WHERE email = ? AND password = ?', [query.email, hashedPassword], callback);
     },
 
     updateUserMoney: function (userId, money, symbol, callback) {

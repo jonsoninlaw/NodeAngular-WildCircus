@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.userService.getUserByEmailAndPassword(this.user.email, this.user.password).subscribe({
       next: (data: any) => {
+        console.log("next");
         if (data != null) {
           this.user.id = data.id;
           this.user.nickname = data.nickname;

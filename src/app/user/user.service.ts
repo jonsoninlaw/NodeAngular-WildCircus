@@ -8,11 +8,6 @@ export class UserService {
   constructor(private http: HttpClient, private toastr: ToastrService, private router: Router) { }
   url = 'http://localhost:3000';
 
-  getUserByEmail(email) {
-    let params = new HttpParams().set("email", email);
-    return this.http.get(`${this.url}/users`, {'params': params});
-  }
-
   getUserByEmailAndPassword(email, password) {
     let params = new HttpParams().set("email", email).set("password", password);
     return this.http.get(`${this.url}/users`, {'params': params});

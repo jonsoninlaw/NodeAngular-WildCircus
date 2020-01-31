@@ -46,12 +46,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (sessionStorage.getItem("user") != null) {
-      let result:User;
-      this.userService.getUserByEmail(sessionStorage.getItem("userEmail")).subscribe((data: User) => {
-        this.user = data;
-      });
-    }
   }
 
   ngAfterViewInit() {
