@@ -31,4 +31,17 @@ export class UserService {
         }
       );
   }
+
+  earnMoney(userId, money) {
+    let params = {"userId": userId, "money": money};
+    this.http.post(`${this.url}/earnMoney`, params)
+    .subscribe(
+      res => {
+        this.toastr.success('Félicitations, vous avez gagné 100 € sans rien faire !');
+      },
+      err => {
+        this.toastr.error('Désolé mais non.');
+      }
+    );
+  }
 }

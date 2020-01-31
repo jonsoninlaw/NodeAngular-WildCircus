@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <form class="text-center" (ngSubmit)="createEvent()">
-      <p class="h4 mb-4">Créer un évènement</p>
+      <p class="h4 mb-4 section-title">Créer un évènement</p>
       <input name="name" type="text" id="name" [(ngModel)]="event.name" class="form-control mb-4" placeholder="Nom" required>
       <input name="price" type="number" id="price" [(ngModel)]="event.price" class="form-control mb-4" placeholder="Prix" required>
       <input name="date" type="date" id="date" [(ngModel)]="event.date" class="form-control mb-4" placeholder="Date" required>

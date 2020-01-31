@@ -9,7 +9,7 @@
             <p class="card-text">{{ showDate(event) }}</p>
             <h6 *ngIf="event.capacity > 0" class="card-subtitle mb-2 text-muted">{{ event.capacity }} places</h6>
             <h6 *ngIf="event.capacity <= 0" class="card-subtitle mb-2 text-muted">PLUS DE PLACE !</h6>
-            <a href="#" *ngIf="event.capacity > 0 && !admin" (click)="addUserEvent($event, event.id, event.price)" class="card-link">Acheter</a>
+            <a href="" *ngIf="event.capacity > 0 && !admin" (click)="addUserEvent($event, event.id, event.price)" class="card-link">Acheter</a>
         </div>
       </div>
     </div>
