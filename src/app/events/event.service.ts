@@ -21,7 +21,7 @@ export class EventService {
           this.router.navigateByUrl('/events');
         },
         err => {
-          this.toastr.error(err.message, 'Error occured');
+          this.toastr.error('Les informations renseignées sont incorrectes');
         }
       );
   }

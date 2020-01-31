@@ -3,10 +3,15 @@
     <div class="row justify-content-md-center">
       <form class="text-center" (ngSubmit)="createUser()">
         <p class="h4 mb-4 section-title">INSCRIPTION</p>
-        <input name="nickname" type="text" id="nickname" [(ngModel)]="user.nickname" class="form-control mb-4" placeholder="Nickname" required>
-        <input name="email" type="email" id="email" [(ngModel)]="user.email" class="form-control mb-4" placeholder="E-mail" required>
-        <input name="password" type="password" id="password" [(ngModel)]="user.password" class="form-control mb-4" placeholder="Password" required>
-        <input name="money" type="number" id="money" [(ngModel)]="user.money" class="form-control mb-4" placeholder="€" required>
+        <label for="nickname">Pseudo</label>
+        <input name="nickname" type="text" id="nickname" [(ngModel)]="user.nickname" class="form-control mb-4" placeholder="Duke Caboom" required>
+        <label for="email">Email</label>
+        <input name="email" type="email" id="email" [(ngModel)]="user.email" class="form-control mb-4" placeholder="duke@caboom.com" required>
+        <label for="password">Mot de passe</label>
+        <input name="password" type="password" id="password" [(ngModel)]="user.password" class="form-control mb-4" placeholder="********" required>
+        <label for="money">Combien avez-vous d'argent ?</label>
+        <input name="money" type="number" id="money" [(ngModel)]="user.money" class="form-control mb-4" placeholder="100 €" required
+        min="0" max="300" step="10">
         <button color="info" block="true" class="btn btn-primary" type="submit">S'inscrire</button>
       </form>
     </div>

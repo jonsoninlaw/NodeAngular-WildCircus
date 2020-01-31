@@ -2,10 +2,15 @@
   <div class="row justify-content-md-center">
     <form class="text-center" (ngSubmit)="createEvent()">
       <p class="h4 mb-4 section-title">Créer un évènement</p>
-      <input name="name" type="text" id="name" [(ngModel)]="event.name" class="form-control mb-4" placeholder="Nom" required>
-      <input name="price" type="number" id="price" [(ngModel)]="event.price" class="form-control mb-4" placeholder="Prix" required>
+      <label for="name">Nom</label>
+      <input name="name" type="text" id="name" [(ngModel)]="event.name" class="form-control mb-4" placeholder="Lancer de nain" required>
+      <label for="price">Tarif</label>
+      <input name="price" type="number" id="price" [(ngModel)]="event.price" class="form-control mb-4" placeholder="3000 €" required>
+      <label for="date">Date</label>
       <input name="date" type="date" id="date" [(ngModel)]="event.date" class="form-control mb-4" placeholder="Date" required>
-      <input name="capacity" type="number" id="capacity" [(ngModel)]="event.capacity" class="form-control mb-4" placeholder="Nombre de places" required>
+      <label for="capacity">Places disponibles</label>
+      <input name="capacity" type="number" id="capacity" [(ngModel)]="event.capacity" class="form-control mb-4" placeholder="100" required>
+      <label for="img">Image</label>
       <input name="img" type="text" id="img" [(ngModel)]="event.img" class="form-control mb-4" placeholder="url de l'image" required>
       <button color="info" block="true" class="btn btn-primary" type="submit">Créer l'évènement</button>
     </form>
